@@ -1,0 +1,19 @@
+---
+import { CATEGORIES, type CategorySlug } from '../lib/categories';
+
+interface Props {
+  category: CategorySlug;
+  class?: string;
+}
+
+const { category, class: className = '' } = Astro.props;
+const c = CATEGORIES[category];
+---
+
+<a
+  href={`/category/${c.slug}/`}
+  class={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ring-1 ring-inset transition hover:opacity-80 ${c.bg} ${c.text} ${c.ring} ${className}`}
+>
+  <span class={`h-1.5 w-1.5 rounded-full ${c.dot}`}></span>
+  {c.label}
+</a>

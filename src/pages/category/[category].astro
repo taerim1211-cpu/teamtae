@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { CATEGORIES, CATEGORY_SLUGS } from '../../lib/categories';
+
+export async function getStaticPaths() {
+  return CATEGORY_SLUGS.map((slug) => ({ params: { category: slug } }));
+}
+
+const { category } = Astro.params;
+const meta = CATEGORIES[category as keyof typeof CATEGORIES];
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft && data.category === category)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title={meta.label} description={meta.description}>
+  <div class="mb-2 flex items-center gap-2">
+    <span class={`h-2 w-2 rounded-full ${meta.dot}`}></span>
+    <span class="text-sm font-medium uppercase tracking-wide text-neutral-400 dark:text-neutral-500">Category</span>
+  </div>
+  <h1 class="font-serif text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white">
+    {meta.label}
+  </h1>
+  <p class="mt-2 text-neutral-500 dark:text-neutral-400">{meta.description}</p>
+
+  {posts.length > 0 ? (
+    <div class="mt-8 divide-y divide-neutral-200/80 dark:divide-neutral-800/80">
+      {posts.map((post) => <PostCard post={post} />)}
+    </div>
+  ) : (
+    <p class="mt-10 text-neutral-500 dark:text-neutral-400">No posts here yet — check back soon.</p>
+  )}
+</Layout>

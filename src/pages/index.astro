@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import PostCard from '../components/PostCard.astro';
+import { CATEGORY_LIST } from '../lib/categories';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 6);
+---
+
+<Layout title="Taerim">
+  <section class="mb-14">
+    <h1 class="font-serif text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl dark:text-white">
+      Taerim
+    </h1>
+    <p class="mt-4 max-w-xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
+      Notes on sports, education, investment, books, and technology — written as I figure things out.
+    </p>
+  </section>
+
+  <section class="mb-14">
+    <div class="grid grid-cols-2 gap-3 sm:grid-cols-5">
+      {CATEGORY_LIST.map((c) => (
+        <a
+          href={`/category/${c.slug}/`}
+          class={`rounded-xl px-4 py-3 text-sm font-medium ring-1 ring-inset transition hover:opacity-80 ${c.bg} ${c.text} ${c.ring}`}
+        >
+          {c.label}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <div class="mb-6 flex items-center justify-between">
+      <h2 class="text-sm font-semibold uppercase tracking-wide text-neutral-400 dark:text-neutral-500">
+        Latest posts
+      </h2>
+      <a href="/blog/" class="text-sm font-medium text-neutral-500 transition hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white">
+        View all &rarr;
+      </a>
+    </div>
+
+    {posts.length > 0 ? (
+      <div class="divide-y divide-neutral-200/80 dark:divide-neutral-800/80">
+        {posts.map((post) => <PostCard post={post} />)}
+      </div>
+    ) : (
+      <p class="text-neutral-500 dark:text-neutral-400">
+        No posts yet — the first one is on its way.
+      </p>
+    )}
+  </section>
+</Layout>
