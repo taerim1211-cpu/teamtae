@@ -12,8 +12,7 @@ const c = CATEGORIES[category];
 
 <a
   href={`/category/${c.slug}/`}
-  class={`inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium ring-1 ring-inset transition hover:opacity-80 ${c.bg} ${c.text} ${c.ring} ${className}`}
+  class={`font-sans text-xs font-semibold uppercase tracking-[0.08em] transition hover:underline hover:underline-offset-4 ${c.text} ${className}`}
 >
-  <span class={`h-1.5 w-1.5 rounded-full ${c.dot}`}></span>
   {c.label}
 </a>

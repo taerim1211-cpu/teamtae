@@ -13,9 +13,7 @@ interface CategoryMeta {
   label: string;
   description: string;
   text: string;
-  bg: string;
-  ring: string;
-  dot: string;
+  border: string;
 }
 
 export const CATEGORIES: Record<CategorySlug, CategoryMeta> = {
@@ -23,46 +21,36 @@ export const CATEGORIES: Record<CategorySlug, CategoryMeta> = {
     slug: 'sports',
     label: 'Sports',
     description: 'Games, training, and the moments that make them worth watching.',
-    text: 'text-amber-700 dark:text-amber-400',
-    bg: 'bg-amber-50 dark:bg-amber-950/40',
-    ring: 'ring-amber-600/20 dark:ring-amber-400/20',
-    dot: 'bg-amber-500',
+    text: 'text-orange-700 dark:text-orange-400',
+    border: 'border-orange-700 dark:border-orange-400',
   },
   education: {
     slug: 'education',
     label: 'Education',
     description: 'Notes on learning well, teaching better, and lifelong study.',
-    text: 'text-blue-700 dark:text-blue-400',
-    bg: 'bg-blue-50 dark:bg-blue-950/40',
-    ring: 'ring-blue-600/20 dark:ring-blue-400/20',
-    dot: 'bg-blue-500',
+    text: 'text-indigo-700 dark:text-indigo-400',
+    border: 'border-indigo-700 dark:border-indigo-400',
   },
   investment: {
     slug: 'investment',
     label: 'Investment',
     description: 'Markets, money, and thinking clearly about the long run.',
-    text: 'text-emerald-700 dark:text-emerald-400',
-    bg: 'bg-emerald-50 dark:bg-emerald-950/40',
-    ring: 'ring-emerald-600/20 dark:ring-emerald-400/20',
-    dot: 'bg-emerald-500',
+    text: 'text-green-800 dark:text-green-400',
+    border: 'border-green-800 dark:border-green-400',
   },
   books: {
     slug: 'books',
     label: 'Books',
     description: 'Reading notes, reviews, and ideas worth holding onto.',
-    text: 'text-violet-700 dark:text-violet-400',
-    bg: 'bg-violet-50 dark:bg-violet-950/40',
-    ring: 'ring-violet-600/20 dark:ring-violet-400/20',
-    dot: 'bg-violet-500',
+    text: 'text-purple-800 dark:text-purple-400',
+    border: 'border-purple-800 dark:border-purple-400',
   },
   technology: {
     slug: 'technology',
     label: 'Technology',
     description: 'Software, tools, and how technology changes the way we work.',
-    text: 'text-sky-700 dark:text-sky-400',
-    bg: 'bg-sky-50 dark:bg-sky-950/40',
-    ring: 'ring-sky-600/20 dark:ring-sky-400/20',
-    dot: 'bg-sky-500',
+    text: 'text-teal-700 dark:text-teal-400',
+    border: 'border-teal-700 dark:border-teal-400',
   },
 };
 

@@ -17,11 +17,11 @@ const postCounts = CATEGORY_LIST.reduce<Record<string, number>>((counts, c) => {
 
 <Layout title="Taerim">
   <section class="mb-14">
-    <h1 class="font-serif text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl dark:text-white">
+    <h1 class="font-serif text-4xl font-semibold tracking-tight text-stone-900 sm:text-5xl dark:text-stone-50">
       Taerim
     </h1>
-    <p class="mt-4 max-w-xl text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
-      Notes on sports, education, investment, books, and technology — written as I figure things out.
+    <p class="mt-4 max-w-xl font-sans text-lg leading-relaxed text-stone-600 dark:text-stone-400">
+      Notes on sports, education, investment, books, and technology, written as I figure things out.
     </p>
   </section>
 
@@ -30,7 +30,7 @@ const postCounts = CATEGORY_LIST.reduce<Record<string, number>>((counts, c) => {
       {CATEGORY_LIST.map((c) => (
         <a
           href={`/category/${c.slug}/`}
-          class={`rounded-xl px-4 py-3 ring-1 ring-inset transition hover:opacity-80 ${c.bg} ${c.text} ${c.ring}`}
+          class={`border px-4 py-3 font-sans transition hover:bg-stone-900/[0.03] dark:hover:bg-stone-50/[0.05] ${c.text} ${c.border}`}
         >
           <div class="text-sm font-medium">{c.label}</div>
           <div class="mt-0.5 text-xs">
@@ -42,22 +42,22 @@ const postCounts = CATEGORY_LIST.reduce<Record<string, number>>((counts, c) => {
   </section>
 
   <section>
-    <div class="mb-6 flex items-center justify-between">
-      <h2 class="text-sm font-semibold uppercase tracking-wide text-neutral-400 dark:text-neutral-500">
+    <div class="mb-6 flex items-center justify-between font-sans">
+      <h2 class="text-sm font-semibold uppercase tracking-wide text-stone-500 dark:text-stone-500">
         Latest posts
       </h2>
-      <a href="/blog/" class="text-sm font-medium text-neutral-500 transition hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white">
+      <a href="/blog/" class="text-sm font-medium text-stone-500 transition hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-50">
         View all &rarr;
       </a>
     </div>
 
     {posts.length > 0 ? (
-      <div class="divide-y divide-neutral-200/80 dark:divide-neutral-800/80">
+      <div class="divide-y divide-stone-200/80 dark:divide-stone-800/80">
         {posts.map((post) => <PostCard post={post} />)}
       </div>
     ) : (
-      <p class="text-neutral-500 dark:text-neutral-400">
-        No posts yet — the first one is on its way.
+      <p class="font-sans text-stone-500 dark:text-stone-400">
+        No posts yet. The first one is on its way.
       </p>
     )}
   </section>

@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 import Layout from './Layout.astro';
 import CategoryBadge from '../components/CategoryBadge.astro';
 import { slugifyTag } from '../lib/tags';
@@ -23,41 +24,39 @@ const formattedUpdated = updatedDate?.toLocaleDateString('en-US', {
 
 <Layout title={title} description={description} article={true}>
   <article>
-    <a href="/blog/" class="mb-8 inline-flex items-center gap-1 text-sm font-medium text-neutral-500 transition hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-3.5 w-3.5">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 12H5M11 18l-6-6 6-6" />
-      </svg>
+    <a href="/blog/" class="mb-8 inline-flex items-center gap-1 font-sans text-sm font-medium text-stone-500 transition hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-50">
+      <Icon name="ph:arrow-left" class="h-3.5 w-3.5" />
       All posts
     </a>
 
     <header class="mb-10">
       <div class="mb-4 flex items-center gap-3">
         <CategoryBadge category={category} />
-        <time datetime={pubDate.toISOString()} class="text-xs text-neutral-400 dark:text-neutral-500">
+        <time datetime={pubDate.toISOString()} class="font-sans text-xs text-stone-500 dark:text-stone-500">
           {formatted}
           {formattedUpdated && ` · updated ${formattedUpdated}`}
         </time>
       </div>
-      <h1 class="font-serif text-3xl font-semibold tracking-tight text-neutral-900 sm:text-4xl dark:text-white">
+      <h1 class="font-serif text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl dark:text-stone-50">
         {title}
       </h1>
-      <p class="mt-4 max-w-[65ch] text-lg leading-relaxed text-neutral-600 dark:text-neutral-400">
+      <p class="mt-4 max-w-[65ch] font-sans text-lg leading-relaxed text-stone-600 dark:text-stone-400">
         {description}
       </p>
     </header>
 
-    <div class="prose prose-neutral dark:prose-invert">
+    <div class="prose prose-stone font-serif text-lg dark:prose-invert">
       <slot />
     </div>
 
     {tags.length > 0 && (
-      <div class="mt-12 flex flex-wrap gap-2 border-t border-neutral-200/80 pt-6 dark:border-neutral-800/80">
+      <div class="mt-12 flex flex-wrap gap-2 border-t border-stone-200/80 pt-6 dark:border-stone-800/80">
         {tags.map((tag) => (
           <a
             href={`/tags/${slugifyTag(tag)}/`}
-            class="rounded-full bg-neutral-100 px-2.5 py-1 text-xs text-neutral-600 transition hover:bg-neutral-200 hover:text-neutral-900 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white"
+            class="border border-stone-300 px-2.5 py-1 font-sans text-xs text-stone-600 transition hover:border-stone-500 hover:text-stone-900 dark:border-stone-700 dark:text-stone-400 dark:hover:border-stone-500 dark:hover:text-stone-50"
           >
-            #{tag}
+            {tag}
           </a>
         ))}
       </div>

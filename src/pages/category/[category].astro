@@ -17,20 +17,19 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft && data.cat
 ---
 
 <Layout title={meta.label} description={meta.description}>
-  <div class="mb-2 flex items-center gap-2">
-    <span class={`h-2 w-2 rounded-full ${meta.dot}`}></span>
-    <span class="text-sm font-medium uppercase tracking-wide text-neutral-400 dark:text-neutral-500">Category</span>
+  <div class="mb-2 font-sans text-sm font-medium uppercase tracking-wide text-stone-500 dark:text-stone-500">
+    Category
   </div>
-  <h1 class="font-serif text-3xl font-semibold tracking-tight text-neutral-900 dark:text-white">
+  <h1 class={`font-serif text-3xl font-semibold tracking-tight ${meta.text}`}>
     {meta.label}
   </h1>
-  <p class="mt-2 text-neutral-500 dark:text-neutral-400">{meta.description}</p>
+  <p class="mt-2 font-sans text-stone-500 dark:text-stone-400">{meta.description}</p>
 
   {posts.length > 0 ? (
-    <div class="mt-8 divide-y divide-neutral-200/80 dark:divide-neutral-800/80">
+    <div class="mt-8 divide-y divide-stone-200/80 dark:divide-stone-800/80">
       {posts.map((post) => <PostCard post={post} />)}
     </div>
   ) : (
-    <p class="mt-10 text-neutral-500 dark:text-neutral-400">No posts here yet — check back soon.</p>
+    <p class="mt-10 font-sans text-stone-500 dark:text-stone-400">No posts here yet. Check back soon.</p>
   )}
 </Layout>

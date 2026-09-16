@@ -23,7 +23,7 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-# impeccable design-review tool (local-only, not version-controlled)
-.claude/skills/impeccable/
+# Claude Code skills (local dev tooling, not version-controlled)
+.claude/skills/
 .claude/agents/impeccable-*.md
 .impeccable/hook.cache.json
