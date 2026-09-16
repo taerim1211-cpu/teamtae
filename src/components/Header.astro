@@ -29,7 +29,8 @@ const navLink = (href: string) =>
       <a
         href="/rss.xml"
         aria-label="RSS feed"
-        class="inline-flex h-9 w-9 items-center justify-center rounded-full text-neutral-600 transition hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white"
+        title="RSS feed"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-full text-neutral-600 transition hover:bg-neutral-100 hover:text-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white"
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" class="h-4.5 w-4.5">
           <path stroke-linecap="round" stroke-linejoin="round" d="M5 5a14 14 0 0 1 14 14M5 11a8 8 0 0 1 8 8" />
@@ -40,12 +41,14 @@ const navLink = (href: string) =>
     </div>
   </div>
 
-  <nav class="flex items-center gap-4 overflow-x-auto border-t border-neutral-200/80 px-5 py-2.5 text-sm sm:hidden dark:border-neutral-800/80">
+  <nav
+    class="flex items-center gap-4 overflow-x-auto border-t border-neutral-200/80 px-5 py-2.5 text-sm sm:hidden dark:border-neutral-800/80 [mask-image:linear-gradient(to_right,transparent,black_1rem,black_calc(100%-1.5rem),transparent)] [-webkit-mask-image:linear-gradient(to_right,transparent,black_1rem,black_calc(100%-1.5rem),transparent)]"
+  >
     {CATEGORY_LIST.map((c) => (
-      <a href={`/category/${c.slug}/`} class={`whitespace-nowrap transition ${navLink(`/category/${c.slug}/`)}`}>
+      <a href={`/category/${c.slug}/`} class={`shrink-0 whitespace-nowrap transition ${navLink(`/category/${c.slug}/`)}`}>
         {c.label}
       </a>
     ))}
-    <a href="/about/" class={`whitespace-nowrap transition ${navLink('/about/')}`}>About</a>
+    <a href="/about/" class={`shrink-0 whitespace-nowrap pr-4 transition ${navLink('/about/')}`}>About</a>
   </nav>
 </header>
