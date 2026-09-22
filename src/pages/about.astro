@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { withBase } from '../lib/paths';
 ---
 
 <Layout title="About" description="A little about this blog and who writes it.">
@@ -12,7 +13,7 @@ import Layout from '../layouts/Layout.astro';
     </p>
     <p>
       I don't post on a fixed schedule. New entries show up whenever I have something worth
-      saying, so browse by category from the nav above, or subscribe via <a href="/rss.xml">RSS</a> to
+      saying, so browse by category from the nav above, or subscribe via <a href={withBase('/rss.xml')}>RSS</a> to
       get new posts as they're published.
     </p>
   </div>

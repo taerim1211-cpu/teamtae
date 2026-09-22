@@ -1,5 +1,6 @@
 ---
 import { CATEGORIES, type CategorySlug } from '../lib/categories';
+import { withBase } from '../lib/paths';
 
 interface Props {
   category: CategorySlug;
@@ -11,7 +12,7 @@ const c = CATEGORIES[category];
 ---
 
 <a
-  href={`/category/${c.slug}/`}
+  href={withBase(`/category/${c.slug}/`)}
   class={`font-sans text-xs font-semibold uppercase tracking-[0.08em] transition hover:underline hover:underline-offset-4 ${c.text} ${className}`}
 >
   {c.label}
