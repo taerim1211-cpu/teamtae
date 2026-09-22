@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://teamtae.com/sitemap-index.xml

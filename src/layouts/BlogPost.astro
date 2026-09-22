@@ -1,14 +1,17 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { getCollection } from 'astro:content';
 import Layout from './Layout.astro';
 import CategoryBadge from '../components/CategoryBadge.astro';
+import PostCard from '../components/PostCard.astro';
 import { slugifyTag } from '../lib/tags';
 import { withBase } from '../lib/paths';
+import { CATEGORIES } from '../lib/categories';
 import type { CollectionEntry } from 'astro:content';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = CollectionEntry<'blog'>['data'] & { id: string };
 
-const { title, description, pubDate, updatedDate, category, tags } = Astro.props;
+const { id, title, description, pubDate, updatedDate, category, tags } = Astro.props;
 
 const formatted = pubDate.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -21,9 +24,44 @@ const formattedUpdated = updatedDate?.toLocaleDateString('en-US', {
   month: 'long',
   day: 'numeric',
 });
+
+const articleUrl = new URL(withBase(`/blog/${id}/`), Astro.site).href;
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: title,
+  description,
+  datePublished: pubDate.toISOString(),
+  dateModified: (updatedDate ?? pubDate).toISOString(),
+  author: { '@type': 'Person', name: 'teamtae' },
+  publisher: { '@type': 'Person', name: 'teamtae' },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+  url: articleUrl,
+  keywords: tags.join(', '),
+  articleSection: CATEGORIES[category].label,
+};
+
+const otherPosts = (await getCollection('blog', ({ data, id: otherId }) => !data.draft && otherId !== id)).sort(
+  (a, b) => {
+    const aSameCategory = a.data.category === category ? 0 : 1;
+    const bSameCategory = b.data.category === category ? 0 : 1;
+    if (aSameCategory !== bSameCategory) return aSameCategory - bSameCategory;
+    return b.data.pubDate.valueOf() - a.data.pubDate.valueOf();
+  }
+);
+const relatedPosts = otherPosts.slice(0, 2);
 ---
 
-<Layout title={title} description={description} article={true}>
+<Layout
+  title={title}
+  description={description}
+  article={true}
+  publishedTime={pubDate}
+  modifiedTime={updatedDate}
+  section={CATEGORIES[category].label}
+  tags={tags}
+  structuredData={structuredData}
+>
   <article>
     <a href={withBase('/blog/')} class="mb-8 inline-flex items-center gap-1 font-sans text-sm font-medium text-stone-500 transition hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-50">
       <Icon name="ph:arrow-left" class="h-3.5 w-3.5" />
@@ -63,4 +101,15 @@ const formattedUpdated = updatedDate?.toLocaleDateString('en-US', {
       </div>
     )}
   </article>
+
+  {relatedPosts.length > 0 && (
+    <section class="mt-16 border-t border-stone-200/80 pt-10 dark:border-stone-800/80">
+      <h2 class="mb-2 font-sans text-sm font-semibold uppercase tracking-wide text-stone-500 dark:text-stone-500">
+        Keep reading
+      </h2>
+      <div class="divide-y divide-stone-200/80 dark:divide-stone-800/80">
+        {relatedPosts.map((post) => <PostCard post={post} />)}
+      </div>
+    </section>
+  )}
 </Layout>

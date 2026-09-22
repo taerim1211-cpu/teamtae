@@ -1,6 +1,6 @@
 ---
 title: "CLEP Exams Are Not a Shortcut to Knowledge You Don't Have"
-description: "The College Board's other credit-by-exam program gets a fraction of AP's attention. Used for the right reason, it's actually the more useful one for some students."
+description: "The College Board's other credit-by-exam program gets a fraction of AP's attention. Used for the right reason, it's actually the more useful of the two."
 pubDate: 2026-09-22
 category: education
 tags: ["clep", "college credit", "exam strategy"]

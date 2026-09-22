@@ -1,6 +1,6 @@
 ---
 title: "Brown's Open Curriculum Isn't Actually Freedom From Structure"
-description: "No core requirements sounds like no requirements at all. The real story is a different kind of structure, one that depends on infrastructure that's quietly eroding."
+description: "No core requirements sounds like no requirements at all. The real story is a different kind of structure, one that depends on eroding infrastructure."
 pubDate: 2026-09-22
 category: education
 tags: ["brown university", "open curriculum", "college choice"]
