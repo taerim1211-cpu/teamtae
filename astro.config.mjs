@@ -9,7 +9,7 @@ import icon from 'astro-icon';
 // https://astro.build/config
 export default defineConfig({
   // TODO: update once the Vercel domain is purchased/connected
-  site: 'https://taerim.vercel.app',
+  site: 'https://teamtae.vercel.app',
   vite: {
     plugins: [tailwindcss()]
   },

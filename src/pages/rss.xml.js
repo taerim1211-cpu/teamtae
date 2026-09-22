@@ -7,7 +7,7 @@ export async function GET(context) {
   );
 
   return rss({
-    title: 'Taerim',
+    title: 'teamtae',
     description: 'Notes on sports, education, investment, books, and technology.',
     site: context.site,
     items: posts.map((post) => ({

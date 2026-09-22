@@ -1,4 +1,4 @@
-# Taerim — blog
+# teamtae blog
 
 A personal blog covering sports, education, investment, books, and technology. Built with
 [Astro](https://astro.build) + [Tailwind CSS v4](https://tailwindcss.com), content authored in
