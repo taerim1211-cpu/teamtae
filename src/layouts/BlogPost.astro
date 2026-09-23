@@ -84,9 +84,19 @@ const relatedPosts = otherPosts.slice(0, 2);
       </p>
     </header>
 
-    <div class="prose prose-stone font-serif text-lg dark:prose-invert">
+    <div class="prose prose-stone font-serif text-lg dark:prose-invert" data-post-content>
       <slot />
     </div>
+
+    <script>
+      // Open external links in post content in a new tab.
+      document.querySelectorAll<HTMLAnchorElement>('[data-post-content] a[href]').forEach((link) => {
+        if (link.host && link.host !== location.host) {
+          link.target = '_blank';
+          link.rel = 'noopener noreferrer';
+        }
+      });
+    </script>
 
     {tags.length > 0 && (
       <div class="mt-12 flex flex-wrap gap-2 border-t border-stone-200/80 pt-6 dark:border-stone-800/80">
