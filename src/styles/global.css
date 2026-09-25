@@ -37,3 +37,22 @@
   --tw-prose-invert-quote-borders: theme(colors.stone.700);
   --tw-prose-invert-code: theme(colors.stone.50);
 }
+
+/* Unlayered .prose above outranks the layered dark:prose-invert utility,
+   so map the dark palette explicitly. */
+.dark .prose {
+  --tw-prose-body: var(--tw-prose-invert-body);
+  --tw-prose-headings: var(--tw-prose-invert-headings);
+  --tw-prose-links: var(--tw-prose-invert-links);
+  --tw-prose-bold: var(--tw-prose-invert-bold);
+  --tw-prose-quotes: var(--tw-prose-invert-quotes);
+  --tw-prose-quote-borders: var(--tw-prose-invert-quote-borders);
+  --tw-prose-code: var(--tw-prose-invert-code);
+  --tw-prose-lead: theme(colors.stone.400);
+  --tw-prose-counters: theme(colors.stone.400);
+  --tw-prose-bullets: theme(colors.stone.600);
+  --tw-prose-hr: theme(colors.stone.800);
+  --tw-prose-captions: theme(colors.stone.400);
+  --tw-prose-th-borders: theme(colors.stone.700);
+  --tw-prose-td-borders: theme(colors.stone.800);
+}
